@@ -1,4 +1,5 @@
 use structopt::StructOpt;
+use log::{info, warn};
 
 #[derive(StructOpt)]
 struct Cli {
@@ -19,4 +20,7 @@ fn main() {
         pattern2: pattern2,
     };
     let args = Cli::from_args();
+    env_logger::init();
+    info!("starting up");
+    warn!("oops, nothing implemented!");
 }
