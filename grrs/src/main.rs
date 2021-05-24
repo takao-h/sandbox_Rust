@@ -1,31 +1,37 @@
+use exitfailure::ExitFailure;
+use failure::ResultExt;
 use structopt::StructOpt;
-use log::{info, warn};
 
 #[derive(StructOpt)]
 struct Cli {
-    pattern1: String,
-    pattern2: String,
+    /// The pattern to look for
+    pattern: String,
+    /// The path to the file to read
+    #[structopt(parse(from_os_str))]
+    path: std::path::PathBuf,
 }
 
-fn main() {
-// let result = std::fs::read_to_string("test.txt").unwrap();
-    let pattern1 = std::env::args().nth(1).expect("no pattern given");
-    let pattern2 = std::env::args().nth(2).expect("no pattern given");
-    let args = Cli {
-        pattern1: pattern1,
-        pattern2: pattern2,
-    };
-    match result {
-        Ok(content) => { println!("File content: {}", content); }
-        Err(error) => { println!("Oh noes: {}", error); }
-    }
+fn main() -> Result<(), ExitFailure> {
     let args = Cli::from_args();
-    env_logger::init();
-    info!("starting up");
-    warn!("oops, nothing implemented!");
+    let content = std::fs::read_to_string(&args.path)
+        .with_context(|_| format!("could not read file `{}`", args.path.display()))?;
+
+    find_matches(&content, &args.pattern, &mut std::io::stdout());
+
+    Ok(())
+}
+
+fn find_matches(content: &str, pattern: &str) {
+    for line in content.lines() {
+        if line.contains(pattern) {
+            println!("{}", line);
+        }
+    }
 }
 
 #[test]
-fn check_answer_validity() {
-    assert_eq!(answer(), 42);
+fn find_a_match() {
+    let mut result = Vec::new();
+    find_matches("lorem ipsum\ndolor sit amet", "lorem", &mut result);
+    assert_eq!(result, b"lorem ipsum\n");
 }
