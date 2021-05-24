@@ -24,3 +24,8 @@ fn main() {
     info!("starting up");
     warn!("oops, nothing implemented!");
 }
+
+#[test]
+fn check_answer_validity() {
+    assert_eq!(answer(), 42);
+}
