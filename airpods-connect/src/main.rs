@@ -1,3 +1,7 @@
+extern crate mac_address;
+
+use mac_address::get_mac_address;
+
 fn main() {
     // let args: Vec<String> = std::env::args().collect();
     // let input = &args[1];
