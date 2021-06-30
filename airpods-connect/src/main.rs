@@ -9,9 +9,19 @@ fn main() {
     println!("{}", get_mac_adress());
 }
 
-fn get_mac_adress() -> String {
+fn get_mac_adress1() -> String {
     let args: Vec<String> = std::env::args().collect();
     return args[1].to_string();
+}
+fn get_mac_address2() {
+    match get_mac_address() {
+        Ok(Some(ma)) => {
+            println!("MAC addr = {}", ma);
+            println!("bytes = {:?}", ma.bytes()); 
+        }
+        On(None) => println!("No MAC address found."),
+        Err(e) => println!("{:?}", e), 
+    }
 }
 
 #[cfg(test)]
