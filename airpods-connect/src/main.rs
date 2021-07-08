@@ -6,7 +6,7 @@ fn main() {
     // let args: Vec<String> = std::env::args().collect();
     // let input = &args[1];
 
-    println!("{}", get_mac_adress());
+    get_mac_address2();
 }
 
 fn get_mac_adress1() -> String {
@@ -19,7 +19,7 @@ fn get_mac_address2() {
             println!("MAC addr = {}", ma);
             println!("bytes = {:?}", ma.bytes()); 
         }
-        On(None) => println!("No MAC address found."),
+        Ok(None) => println!("No MAC address found."),
         Err(e) => println!("{:?}", e), 
     }
 }
