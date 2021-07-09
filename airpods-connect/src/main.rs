@@ -5,14 +5,15 @@ use mac_address::get_mac_address;
 fn main() {
     // let args: Vec<String> = std::env::args().collect();
     // let input = &args[1];
-
+    get_args();
     get_mac_address2();
 }
 
-fn get_mac_adress1() -> String {
+fn get_args() -> String {
     let args: Vec<String> = std::env::args().collect();
     return args[1].to_string();
 }
+
 fn get_mac_address2() {
     match get_mac_address() {
         Ok(Some(ma)) => {
