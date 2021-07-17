@@ -1,0 +1,2 @@
+cargo:rustc-cfg=anyhow_no_macro_reexport
+cargo:rustc-cfg=anyhow_no_ptr_addr_of
