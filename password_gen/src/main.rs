@@ -1,7 +1,9 @@
 use rand::Rng;
 
 fn main() {
-    println!("Hello, world!");
+    let temp_pass = "hogehoge";
+    copy_password(temp_pass.to_string());
+    gen_rand_str();
 }
 
 fn gen_rand_str() {
@@ -19,10 +21,19 @@ fn gen_rand_str() {
     println!("{}", alphabet_str);
 }
 
+fn copy_password(password: String) {
+    println!("{}", "copy password!!");
+    println!("{}", password);
+}
+
 // #[cfg(test)]
 // mod tests {
-//     fn create_password_ok() {
-//         let pass_length = 5;
+//     // fn create_password_ok() {
+//     //     let pass_length = 5;
 
+//     // }
+//     fn copy_ok() {
+//         let temp = "hogehoge";
+//         copy_password(temp);
 //     }
-// };
+// }
