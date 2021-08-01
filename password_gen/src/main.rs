@@ -44,14 +44,15 @@ fn main() {
 //     println!("{}", password);
 // }
 
-// #[cfg(test)]
-// mod tests {
-//     // fn create_password_ok() {
-//     //     let pass_length = 5;
+#[cfg(test)]
+mod tests {
+    // fn create_password_ok() {
+    //     let pass_length = 5;
 
-//     // }
-//     fn copy_ok() {
-//         let temp = "hogehoge";
-//         copy_password(temp);
-//     }
-// }
+    // }
+    
+    fn args_ok() {
+        let args = Argument::from_args();
+
+    }
+}
