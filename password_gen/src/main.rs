@@ -1,3 +1,4 @@
+use arboard::Clipboard;
 use structopt::StructOpt;
 use rand::{Rng, thread_rng};
 
@@ -20,8 +21,9 @@ fn main() {
         let upper_bound = if i == 0 { 10 } else {36};
         result = result + &alphanumerics[rng.gen_range(0..upper_bound)].to_string();
     }
-
     println!("{}", result);
+    add_clipboard(result);
+
 }
 
 // fn gen_rand_str() {
@@ -43,16 +45,17 @@ fn main() {
 //     println!("{}", "copy password!!");
 //     println!("{}", password);
 // }
-
-#[cfg(test)]
-mod tests {
-    // fn create_password_ok() {
-    //     let pass_length = 5;
-
-    // }
-    
-    fn args_ok() {
-        let args = Argument::from_args();
-
+    fn add_clipboard(cory_word: String) {
+        let mut clipboard = Clipboard::new().unwrap();
+        clipboard.set_text(cory_word.into()).unwrap();
     }
-}
+
+// #[cfg(test)]
+// mod tests {
+//     #[test]
+//     fn clipboard_ok () {
+//         let pat = "hello world";
+//         add_clipboard(pat);
+//     }
+
+// }
