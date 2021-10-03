@@ -6,6 +6,7 @@ use rand::{Rng, thread_rng};
 struct Argument {
     number_of_digits: u64,
 }
+
 fn main() {
     let args = Argument::from_args();
 
