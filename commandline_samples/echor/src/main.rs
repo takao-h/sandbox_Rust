@@ -1,7 +1,7 @@
 use clap::{App, Arg};
 
 fn main() {
-    let mtches =App::new("echor")
+    let matches =App::new("echor")
     .version("0.1.0")
     .author("takao-h")
     .about("Rust echo")
@@ -16,7 +16,7 @@ fn main() {
         Arg::with_name("omit_newline")
         .short("n")
         .help("Do not print newline")
-        .text_value(false),
+        .takes_value(false),
     )
     .get_matches();
 
