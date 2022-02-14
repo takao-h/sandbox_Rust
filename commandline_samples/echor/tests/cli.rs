@@ -6,8 +6,7 @@ type TestResult = Result<(), Box<dyn std::error::Error>>;
 // --------------------------------------------------
 #[test]
 fn dies_no_args() -> TestResult {
-    Command::ca
-    rgo_bin("echor")?
+    Command::cargo_bin("echor")?
         .assert()
         .failure()
         .stderr(predicate::str::contains("USAGE"));
