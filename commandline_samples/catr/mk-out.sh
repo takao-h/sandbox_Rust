@@ -2,12 +2,12 @@
 
 set -u
 
-ROOT="test/inputs"
-OUT_DIR="test/expected"
+ROOT="tests/inputs"
+OUT_DIR="tests/expected"
 
 [[ ! -d "$OUT_DIR" ]] && mkdir -p "$OUT_DIR"
 
-EMPTY="$ROOT/empty.text"
+EMPTY="$ROOT/empty.txt"
 FOX="$ROOT/fox.txt"
 SPIDERS="$ROOT/spiders.txt"
 BUSTLE="$ROOT/the-bustle.txt"
@@ -15,7 +15,7 @@ ALL="$EMPTY $FOX $SPIDERS $BUSTLE"
 
 for FILE in $ALL; do
     BASENAME=$(basename "$FILE")
-    cat  $FILE > ${OUT_DIR}/${BASENAME}.out
+    cat    $FILE > ${OUT_DIR}/${BASENAME}.out
     cat -n $FILE > ${OUT_DIR}/${BASENAME}.n.out
     cat -b $FILE > ${OUT_DIR}/${BASENAME}.b.out
 done
