@@ -1,4 +1,3 @@
-
 use clap::{App, Arg};
 use std::error::Error;
 use std::fs::File;
@@ -22,7 +21,7 @@ pub fn get_args() -> MyResult<Config> {
       Arg::with_name("files")
       .value_name("FILE")
       .help("Input files")
-      .multiple(ture)
+      .multiple(true)
       .default_value("-"),
     )
     .arg(
@@ -48,8 +47,8 @@ fn run (config: Config) -> MyResult {
       Err(e) => eprint!{"{}, {}", filename, e},
       Ok(file!) => {
         let mut last_num = 0;
-        for (line_name, line_relust) in file.lines().enumerate() {
-            let line = line_relust?;
+        for (line_name, line_result) in file.lines().enumerate() {
+            let line = line_result?;
             if config.number_lines {
               println!("{:6}\t{}", line_num + 1, line);
             } else if config.number_nonblank_lines {
